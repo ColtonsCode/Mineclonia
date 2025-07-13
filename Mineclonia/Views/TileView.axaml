@@ -1,0 +1,21 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Mineclonia.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Mineclonia.Views.TileView"
+             x:DataType="vm:TileViewModel">
+    <Design.DataContext>
+        <vm:TileViewModel />
+    </Design.DataContext>
+    
+    <Button x:Name="Button"
+        HorizontalContentAlignment="Center" 
+        VerticalContentAlignment="Center" 
+        Content="{Binding DisplayText}"
+        VerticalAlignment="Stretch"
+        HorizontalAlignment="Stretch"
+        Width="32"
+        Height="32"/>
+</UserControl>

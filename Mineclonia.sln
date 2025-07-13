@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mineclonia", "Mineclonia\Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minecodel", "Minecodel\Minecodel.csproj", "{1A0BB916-B8C2-4DFB-A1F1-04EB15FE12C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minetrap", "Minetrap\Minetrap.csproj", "{59234378-9045-47B8-9DC0-7B4663DFD04E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,9 +24,5 @@ Global
 		{1A0BB916-B8C2-4DFB-A1F1-04EB15FE12C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A0BB916-B8C2-4DFB-A1F1-04EB15FE12C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A0BB916-B8C2-4DFB-A1F1-04EB15FE12C7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59234378-9045-47B8-9DC0-7B4663DFD04E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59234378-9045-47B8-9DC0-7B4663DFD04E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59234378-9045-47B8-9DC0-7B4663DFD04E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59234378-9045-47B8-9DC0-7B4663DFD04E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

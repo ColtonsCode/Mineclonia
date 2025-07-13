@@ -11,35 +11,31 @@ public class Minefield
     
     public Tile[,] Tiles { get; }
 
-    public Minefield(int width, int height)
+    public Minefield(int rows, int cols)
     {
         int tileSize = Unsafe.SizeOf<Tile>();
-        int fieldSize = tileSize * width * height;
+        int fieldSize = tileSize * rows * cols;
         long sizeBeforeAlloc = GC.GetAllocatedBytesForCurrentThread();
 
-        int mines = width * height / 10;
+        int mines = rows * cols / 10;
         
-        Tiles = GenerateTiles(width, height, mines);
+        Tiles = GenerateTiles(rows, cols, mines);
         long actualSize = GC.GetAllocatedBytesForCurrentThread() -  sizeBeforeAlloc;
-        
-
-        PrintDebugInfo(width, height, tileSize, fieldSize, actualSize, mines);
-        PrintBoardPreview(Tiles, height, width);
     }
 
-    private static Tile[,] GenerateTiles(int width, int height, int totalMines)
+    private static Tile[,] GenerateTiles(int rows, int cols, int totalMines)
     {
         var rng = new Random();
         
-        var tiles = new Tile[width, height];
+        var tiles = new Tile[rows, cols];
 
-        var positions = new List<(int x, int y)>(width * height);
+        var positions = new List<(int row, int col)>(rows * cols);
 
-        for (var y = 0; y < height; y++)
+        for (int row = 0; row < rows; row++)
         {
-            for (var x = 0; x < width; x++)
+            for (int col = 0; col < cols; col++)
             {
-                positions.Add((x, y));
+                positions.Add((row, col));
             }
         }
 
@@ -52,19 +48,19 @@ public class Minefield
         
         for (int i = 0; i < totalMines; i++)
         {
-            (int x, int y) = positions[i];
-            tiles[x, y].IsMine = true;
+            (int row, int col) = positions[i];
+            tiles[row, col].IsMine = true;
             // Update the mine count for adjacent tiles.
-            for (int dy = -1; dy <= 1; dy++)
+            for (int drow = -1; drow <= 1; drow++)
             {
-                for (int dx = -1; dx <= 1; dx++)
+                for (int dcol = -1; dcol <= 1; dcol++)
                 {
-                    if (dx == 0 && dy == 0) continue;
-                    int nx = x + dx;
-                    int ny = y + dy;
-                    if (nx < 0 || nx >= width || ny < 0 || ny >= height) continue;
-                    if (!tiles[nx, ny].IsMine)
-                        tiles[nx, ny].AdjacentMines++;
+                    if (dcol == 0 && drow == 0) continue;
+                    int ncol = col + dcol;
+                    int nrow = row + drow;
+                    if (ncol < 0 || ncol >= cols || nrow < 0 || nrow >= rows) continue;
+                    if (!tiles[nrow, ncol].IsMine)
+                        tiles[nrow, ncol].AdjacentMines++;
                 }
             }
         }
