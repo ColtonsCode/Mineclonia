@@ -9,8 +9,5 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        
-        var mineField = new Minefield(10, 25);
-        MineFieldView.DataContext = new MineFieldViewModel(mineField);
     }
 }

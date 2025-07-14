@@ -10,12 +10,40 @@
         <vm:TileViewModel />
     </Design.DataContext>
     
-    <Button x:Name="Button"
+    <Button 
+        x:Name="Core"
         HorizontalContentAlignment="Center" 
-        VerticalContentAlignment="Center" 
-        Content="{Binding DisplayText}"
+        VerticalContentAlignment="Center"
         VerticalAlignment="Stretch"
         HorizontalAlignment="Stretch"
-        Width="32"
-        Height="32"/>
+        Width="64"
+        Height="64"
+        IsHitTestVisible="{Binding IsClickable}"
+        CommandParameter="{Binding}"
+        Command="{Binding ClickedCommand}"
+        Background="{Binding BackgroundBrush}"
+        ClickMode="Press"
+        PointerPressed="Tile_OnPointerPressed">
+        
+        <Button.Styles>
+            <Style Selector="Button:pointerover">
+                <Setter Property="Background" Value="LightGray"/>
+            </Style>
+        </Button.Styles>
+        
+        <Viewbox Stretch="Uniform">
+            <Grid>
+                <Image Source="{Binding BombImage}"
+                       IsVisible="{Binding ShowBomb}" />
+                <Image Source="{Binding FlagImage}"
+                       IsVisible="{Binding ShowFlag}" />
+                
+                <TextBlock 
+                    Text="{Binding DisplayText}"
+                    Foreground="{Binding ForegroundBrush}"
+                    FontWeight="Bold"
+                    FontSize="16"/>
+            </Grid>
+        </Viewbox>
+    </Button>
 </UserControl>

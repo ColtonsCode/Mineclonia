@@ -6,6 +6,7 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using Mineclonia.ViewModels;
 using Mineclonia.Views;
+using Minecodel;
 
 namespace Mineclonia;
 
@@ -23,9 +24,12 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
+            
+            var minefield = new Minefield(15, 25, 15 * 25 / 8);
+            
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = new MainWindowViewModel(new MineFieldViewModel(minefield)),
             };
         }
 

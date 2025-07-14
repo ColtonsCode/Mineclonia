@@ -24,7 +24,7 @@
             
             <ItemsControl.ItemTemplate>
                 <DataTemplate x:DataType="vm:TileViewModel">
-                        <views:TileView DataContext="{Binding}"/>
+                        <views:TileView DataContext="{Binding}" />
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

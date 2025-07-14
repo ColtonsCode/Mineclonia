@@ -11,13 +11,11 @@ public class Minefield
     
     public Tile[,] Tiles { get; }
 
-    public Minefield(int rows, int cols)
+    public Minefield(int rows, int cols, int mines)
     {
         int tileSize = Unsafe.SizeOf<Tile>();
         int fieldSize = tileSize * rows * cols;
         long sizeBeforeAlloc = GC.GetAllocatedBytesForCurrentThread();
-
-        int mines = rows * cols / 10;
         
         Tiles = GenerateTiles(rows, cols, mines);
         long actualSize = GC.GetAllocatedBytesForCurrentThread() -  sizeBeforeAlloc;
